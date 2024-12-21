@@ -48,38 +48,6 @@ output "object_url" {
   value = "https://${aws_s3_bucket.website_bucket.bucket}.s3.eu-central-1.amazonaws.com/${aws_s3_object.index_file.key}"
 }
 
-
-
-resource "aws_apprunner_service" "json_api_service" {
-  service_name = "json-api-service"
-
-  source_configuration {
-    authentication_configuration {
-      access_role_arn = null # No private repository access required
-    }
-
-    image_repository {
-      image_identifier = "hasura/jsonplaceholder:latest" # Public Docker image
-      image_repository_type = "ECR_PUBLIC"
-    }
-
-    auto_deployments_enabled = true
-  }
-
-  instance_configuration {
-    cpu    = "1024" # 1 vCPU
-    memory = "2048" # 2 GB
-  }
-
-  tags = {
-    Name = "json-api-service"
-  }
-}
-
-output "service_url" {
-  value = aws_apprunner_service.json_api_service.service_url
-}
-
 resource "aws_ecr_repository" "app_ecr_repo" {
   name = "app-repo"
   force_delete = true
