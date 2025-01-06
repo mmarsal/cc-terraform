@@ -5,6 +5,22 @@
     <title>Hello Cloud</title>
 </head>
 <body>
-    Hello Cloud
+<header>Hello Cloud</header>
+<button id="api-call">Call API</button>
+<p id="api-response"></p>
 </body>
 </html>
+
+<script>
+    document.getElementById("api-call").addEventListener("click", async () => {
+        const responseElement = document.getElementById("api-response");
+        try {
+            const apiUrl = "https://api-container-q2hafmaakq-ey.a.run.app";
+            const response = await fetch(apiUrl + "/json");
+            const data = await response.json();
+            responseElement.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+            responseElement.textContent = "Can not call API: " + error.message;
+        }
+    });
+</script>
