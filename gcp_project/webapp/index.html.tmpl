@@ -7,6 +7,7 @@
 <body>
 <header>Hello Cloud</header>
 <button id="api-call">Call API</button>
+<button id="custom-api-call">Call Custom API</button>
 <p id="api-response"></p>
 </body>
 </html>
@@ -23,4 +24,16 @@
             responseElement.textContent = "Can not call API: " + error.message;
         }
     });
+
+    document.getElementById("custom-api-call").addEventListener("click", async () => {
+            const responseElement = document.getElementById("api-response");
+            try {
+                const apiUrl = "${custom_api_url}";
+                const response = await fetch(apiUrl + "/json");
+                const data = await response.json();
+                responseElement.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseElement.textContent = "Can not call API: " + error.message;
+            }
+        });
 </script>

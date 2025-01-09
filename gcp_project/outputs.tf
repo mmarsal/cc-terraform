@@ -5,3 +5,7 @@ output "bucket_url" {
 output "api_url" {
   value = google_cloud_run_v2_service.api_container.uri
 }
+
+output "custom_api_url" {
+  value = google_cloud_run_v2_service.custom_api_container.uri
+}
