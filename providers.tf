@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "google" {
-  project = "cc-terraform-445311"
+  project = var.project_id
   region  = "europe-west3"
   zone    = "europe-west3-a"
 }

@@ -38,7 +38,7 @@ resource "google_cloud_run_v2_service" "custom_api_container" {
 
   depends_on = [
     google_artifact_registry_repository.go_api_repo,
-    null_resource.gcloud,
+    null_resource.gcloud_auth,
     null_resource.docker_build,
     null_resource.docker_push
   ]
