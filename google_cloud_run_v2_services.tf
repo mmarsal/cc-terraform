@@ -24,7 +24,7 @@ resource "google_cloud_run_v2_service" "custom_api_container" {
 
   template {
     containers {
-      image = "europe-west3-docker.pkg.dev/${var.project_id}/go-api-repo/my-app:tag1"
+      image = "europe-west3-docker.pkg.dev/${var.project_id}/go-api-repo/my-app:latest"
       ports {
         container_port = 8080
       }
